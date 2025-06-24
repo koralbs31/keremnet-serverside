@@ -9,6 +9,9 @@ const router = express_1.default.Router();
 router.route("/").get((req, res) => {
     postsController_cjs_1.default.getPosts(req, res);
 });
+router.route("/:id").get((req, res) => {
+    postsController_cjs_1.default.getPostById(req, res);
+});
 router.route("/add").post((req, res) => {
     postsController_cjs_1.default.addPost(req, res);
 });

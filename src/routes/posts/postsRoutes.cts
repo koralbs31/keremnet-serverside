@@ -4,7 +4,7 @@ import _ from '../../controllers/posts/postsController.cjs'
 const router = express.Router();
 
 interface PostBody{
-    id: number
+    id: string;
     title: string;
     author: string;
     publishedAt: string;
@@ -14,7 +14,7 @@ router.route("/").get((req: Request, res: Response) => {
     _.getPosts(req, res)
 });
 
-router.route("/:id").get((req: Request<{ id: number }>, res: Response) => {
+router.route("/:id").get((req: Request<{ id: string }>, res: Response) => {
     _.getPostById(req, res)
 });
 
