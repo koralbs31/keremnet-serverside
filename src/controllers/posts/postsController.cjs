@@ -33,7 +33,7 @@ const posts = [
     }
 ];
 const getPosts = (req, res) => {
-    res.status(200).json({ posts: posts });
+    res.status(200).json(posts);
 };
 const addPost = (req, res) => {
     posts.push({
@@ -42,7 +42,7 @@ const addPost = (req, res) => {
         "publishedAt": req.body.publishedAt,
         "content": req.body.content
     });
-    res.status(200).json({ posts: posts });
+    res.status(200).json(posts);
 };
 const deletePost = (req, res) => {
     const titleToDelete = req.params.title;
@@ -50,7 +50,7 @@ const deletePost = (req, res) => {
     if (index === -1)
         return res.status(404).json({ error: "Post not found" });
     posts.splice(index, 1);
-    res.status(200).json({ posts });
+    res.status(200).json(posts);
 };
 const updatePost = (req, res) => {
     const titleToUpdate = req.params.title;
@@ -58,7 +58,7 @@ const updatePost = (req, res) => {
     if (index === -1)
         return res.status(404).json({ error: "Post not found" });
     posts[index] = req.body;
-    res.status(200).json({ posts });
+    res.status(200).json(posts);
 };
 const _ = {
     getPosts,

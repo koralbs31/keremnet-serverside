@@ -41,7 +41,7 @@ interface PostBody{
 }
 
 const getPosts = (req: Request, res: Response) => {
-    res.status(200).json({posts: posts});
+    res.status(200).json(posts);
 }
 
 const addPost = (req: Request<{},{},PostBody>, res: Response)=> {
@@ -51,7 +51,7 @@ const addPost = (req: Request<{},{},PostBody>, res: Response)=> {
         "publishedAt": req.body.publishedAt,
         "content": req.body.content
     });
-    res.status(200).json({posts: posts});
+    res.status(200).json(posts);
 }
 
 
@@ -61,7 +61,7 @@ const deletePost = (req: Request, res: Response) => {
     if (index === -1) return res.status(404).json({ error: "Post not found" });
 
     posts.splice(index, 1);
-    res.status(200).json({ posts });
+    res.status(200).json(posts);
 }
 
 const updatePost = (req: Request<{ title: string }, {}, PostBody>, res: Response) => {
@@ -70,7 +70,7 @@ const updatePost = (req: Request<{ title: string }, {}, PostBody>, res: Response
     if (index === -1) return res.status(404).json({ error: "Post not found" });
 
     posts[index] = req.body;
-    res.status(200).json({ posts });
+    res.status(200).json(posts);
 }
 
 const _ = {

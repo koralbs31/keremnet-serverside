@@ -3,10 +3,12 @@ import postRoutes from './routes/posts/postsRoutes.cjs'
 import bodyParser from "body-parser";
 import userRoutes from './routes/users/usersRoutes.cjs'
 import path from 'path';
+import cors from 'cors'
 
 const app: Application = express();
 const PORT: number = 8080;
 
+app.use(cors())
 app.use("/profile-pics", express.static(path.join(__dirname, "public/profile-pics")));
 app.use(bodyParser.json())
 app.use(express.json());
