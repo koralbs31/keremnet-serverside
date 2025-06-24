@@ -1,4 +1,5 @@
 import { Response, Request }from "express"
+import {v4 as uuidv4} from 'uuid'
 
 const posts = [
     {
@@ -50,15 +51,17 @@ const getPosts = (req: Request, res: Response) => {
     res.status(200).json(posts);
 }
 
-const addPost = (req: Request<{},{},PostBody>, res: Response)=> {
-    posts.push({     
-        "id" :  req.body.id,
-        "title": req.body.title,
-        "author": req.body.author,
-        "publishedAt": req.body.publishedAt,
-        "content": req.body.content
-    });
-    res.status(200).json(posts);
+const addPost = (req: Request<{}, {}, PostBody>, res: Response) => {
+  const newPost = {
+    id: uuidv4(),
+    title: req.body.title,
+    author: req.body.author,
+    publishedAt: new Date().toISOString(),
+    content: req.body.content,
+  };
+
+  posts.push(newPost);
+  res.status(200).json(newPost)
 }
 
 const getPostById = (req: Request<{ id: string }>, res: Response) => {

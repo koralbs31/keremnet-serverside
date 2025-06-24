@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const uuid_1 = require("uuid");
 const posts = [
     {
         "id": "1",
@@ -42,7 +43,7 @@ const getPosts = (req, res) => {
 };
 const addPost = (req, res) => {
     posts.push({
-        "id": req.body.id,
+        "id": (0, uuid_1.v4)(),
         "title": req.body.title,
         "author": req.body.author,
         "publishedAt": req.body.publishedAt,
